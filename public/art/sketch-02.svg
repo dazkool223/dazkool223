@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none">
+  <rect width="400" height="400" fill="#11100d"/>
+  <g stroke="#b8b2a4" stroke-linecap="round" fill="none" transform="rotate(8 200 200)">
+    <!-- violin body -->
+    <path d="M200 310
+      C 245 310 263 288 256 258
+      C 251 238 233 240 231 218
+      C 229 200 247 202 248 188
+      C 250 158 227 138 200 136
+      C 173 138 150 158 152 188
+      C 153 202 171 200 169 218
+      C 167 240 149 238 144 258
+      C 137 288 155 310 200 310 Z" stroke-width="1.8"/>
+    <!-- inner echo line, sketchy -->
+    <path d="M200 304
+      C 240 304 256 285 250 258
+      C 246 240 228 241 226 218
+      C 224 202 241 203 243 189
+      C 245 162 224 144 200 142" stroke-width="0.7" opacity="0.4"/>
+    <!-- f-holes -->
+    <path d="M178 230 C 170 240 172 252 180 260 M180 230 a3 3 0 1 0 0.1 0 M178 262 a3 3 0 1 0 0.1 0" stroke-width="1.2"/>
+    <path d="M222 230 C 230 240 228 252 220 260 M220 230 a3 3 0 1 0 0.1 0 M222 262 a3 3 0 1 0 0.1 0" stroke-width="1.2"/>
+    <!-- bridge -->
+    <path d="M186 246 L214 246 M188 246 L188 238 M212 246 L212 238" stroke-width="1.3"/>
+    <!-- neck + fingerboard -->
+    <path d="M193 136 L191 70 M207 136 L209 70" stroke-width="1.5"/>
+    <!-- pegbox + scroll -->
+    <path d="M191 70 C 190 56 196 48 204 48 C 212 48 215 56 211 62 C 208 67 202 66 202 60" stroke-width="1.5"/>
+    <path d="M184 72 L191 70 M209 70 L216 68 M184 84 L191 82 M209 82 L216 80" stroke-width="1.4"/>
+    <!-- strings -->
+    <path d="M195 70 L192 290 M199 70 L198 292 M203 70 L204 292 M207 70 L210 290" stroke-width="0.6" opacity="0.7"/>
+    <!-- tailpiece -->
+    <path d="M193 292 L207 292 L204 268 L196 268 Z" stroke-width="1.2"/>
+    <!-- shading on lower bout -->
+    <path d="M160 280 L150 292 M168 290 L158 302 M178 296 L170 306 M236 282 L246 294 M230 292 L240 302" stroke-width="0.7" opacity="0.45"/>
+  </g>
+  <text x="24" y="378" font-family="monospace" font-size="11" fill="#5c564b">№ 02 · the violin, again</text>
+</svg>

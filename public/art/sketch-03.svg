@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none">
+  <rect width="400" height="400" fill="#11100d"/>
+  <g stroke="#b8b2a4" stroke-linecap="round" fill="none">
+    <!-- wall, slightly crooked -->
+    <path d="M70 60 L330 64 L327 348 L74 344 Z" stroke-width="1.4" opacity="0.8"/>
+    <!-- window frame -->
+    <path d="M120 110 L282 113 L279 290 L123 287 Z" stroke-width="1.9"/>
+    <path d="M128 118 L274 121 L271 282 L131 279 Z" stroke-width="0.8" opacity="0.5"/>
+    <!-- arch above -->
+    <path d="M120 110 C 140 78 262 80 282 113" stroke-width="1.7"/>
+    <path d="M128 112 C 146 86 256 88 274 115" stroke-width="0.7" opacity="0.4"/>
+    <!-- shutters -->
+    <path d="M201 116 L200 284" stroke-width="1.4"/>
+    <path d="M136 132 L194 134 M136 150 L194 152 M136 168 L194 170 M136 186 L194 188 M136 204 L194 206 M136 222 L194 224 M136 240 L194 242 M136 258 L194 260" stroke-width="0.9" opacity="0.6"/>
+    <!-- right shutter ajar, darker hatching -->
+    <path d="M208 134 L266 138 L264 276 L207 272 Z" stroke-width="1.1"/>
+    <path d="M214 150 L258 264 M222 146 L262 250 M230 144 L264 232 M212 172 L252 268 M210 196 L242 270" stroke-width="0.7" opacity="0.5"/>
+    <!-- sill + flower pot -->
+    <path d="M112 292 L290 295 L288 306 L114 303 Z" stroke-width="1.5"/>
+    <path d="M160 292 L164 270 L186 271 L188 292 M165 270 C 168 258 182 258 185 270" stroke-width="1.2"/>
+    <path d="M172 258 q-6 -10 2 -16 M176 257 q1 -12 10 -12 M170 260 q-12 -4 -12 -14" stroke-width="1" opacity="0.8"/>
+    <!-- stones in the wall -->
+    <path d="M82 120 q14 -6 24 2 M88 180 q12 -8 22 0 M80 250 q14 -6 24 2 M300 140 q12 -6 20 2 M298 220 q12 -6 20 2 M302 300 q10 -6 18 2" stroke-width="0.8" opacity="0.4"/>
+  </g>
+  <text x="24" y="378" font-family="monospace" font-size="11" fill="#5c564b">№ 03 · old city window</text>
+</svg>

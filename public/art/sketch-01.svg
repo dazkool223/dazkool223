@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none">
+  <rect width="400" height="400" fill="#11100d"/>
+  <g stroke="#b8b2a4" stroke-linecap="round" fill="none">
+    <!-- distant ridge -->
+    <path d="M20 250 L80 190 L110 215 L160 150 L200 195 L255 120 L300 180 L340 155 L385 210" stroke-width="1.6" opacity="0.9"/>
+    <path d="M22 254 L80 195 L112 219 L160 156 L200 199 L254 127 L299 184 L339 160 L383 213" stroke-width="0.8" opacity="0.4"/>
+    <!-- foreground ridge -->
+    <path d="M0 320 L70 270 L130 305 L210 240 L280 300 L360 255 L400 290" stroke-width="2.2"/>
+    <!-- snow hatching on the big peak -->
+    <path d="M247 135 L238 158 M255 140 L243 170 M262 146 L252 172 M268 154 L260 174" stroke-width="0.9" opacity="0.6"/>
+    <path d="M152 165 L145 184 M160 168 L150 192 M166 176 L158 194" stroke-width="0.9" opacity="0.5"/>
+    <!-- foreground shading -->
+    <path d="M40 318 L28 332 M60 305 L42 326 M80 295 L58 322 M100 300 L80 324 M120 308 L102 328" stroke-width="0.8" opacity="0.45"/>
+    <path d="M230 270 L212 292 M250 278 L230 300 M270 290 L252 310" stroke-width="0.8" opacity="0.45"/>
+    <!-- sun, barely there -->
+    <circle cx="330" cy="90" r="22" stroke-width="0.9" opacity="0.5"/>
+    <path d="M330 60 L330 50 M358 90 L368 90 M350 70 L357 63" stroke-width="0.8" opacity="0.35"/>
+    <!-- a few birds -->
+    <path d="M120 100 q6 -7 12 0 M138 108 q5 -6 10 0 M105 115 q5 -6 10 0" stroke-width="1.1" opacity="0.7"/>
+  </g>
+  <text x="24" y="378" font-family="monospace" font-size="11" fill="#5c564b">№ 01 · ridge line, from memory</text>
+</svg>
