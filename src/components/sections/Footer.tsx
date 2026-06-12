@@ -35,7 +35,7 @@ export default function Footer() {
 
       <div className="mx-auto max-w-7xl px-6 py-28 md:px-10 md:py-36">
         <SectionHeading
-          index="09"
+          index="05"
           title="say hello"
           note="the inbox is always compiling"
         />
@@ -62,7 +62,7 @@ export default function Footer() {
               <Magnetic className="inline-block">
                 <a
                   href={profile.resume}
-                  download="neeraj-kulkarni-resume.pdf"
+                  download="neeraj-kulkarni-python-fullstack.pdf"
                   data-cursor
                   className="inline-flex items-center gap-4 border border-line px-8 py-5 font-mono text-sm tracking-wider text-muted transition-colors duration-300 hover:border-accent hover:text-ink"
                 >
@@ -111,8 +111,9 @@ export default function Footer() {
             © 2026 {profile.name} · designed & built in the workshop
           </p>
           <p className="label-mono">
-            next.js 16 · gsap · three.js ·{" "}
-            <span className="text-accent">press “g” for the grid · “`” for the console</span>
+            <span className="text-accent">
+              “`” opens the console · try “theme list”
+            </span>
           </p>
         </div>
       </div>

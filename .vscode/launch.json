@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "command": "npm run dev",
+      "name": "Portfolio - Dev",
+      "request": "launch",
+      "type": "node-terminal"
+    }
+  ]
+}

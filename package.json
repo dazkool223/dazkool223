@@ -1,13 +1,12 @@
 {
-  "name": "dazkool223",
-  "version": "0.1.0",
+  "name": "dazkool",
+  "version": "0.1.1",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint",
-    "resume": "node scripts/make-resume.js"
+    "lint": "eslint"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",

@@ -91,6 +91,21 @@ export default function Hero() {
           Fullstack engineer at {profile.org}. Part lab notebook, part
           playground - all work in progress.
         </p>
+
+        <p className="hero-fade mt-6 font-mono text-xs leading-relaxed text-faint">
+          tip: this site has a working console.{" "}
+          <button
+            type="button"
+            onClick={() =>
+              window.dispatchEvent(new CustomEvent("workshop:console"))
+            }
+            className="text-accent underline underline-offset-4 transition-colors hover:text-ink"
+          >
+            open it
+          </button>{" "}
+          or press{" "}
+          <kbd className="border border-line px-1.5 py-0.5 text-ink">`</kbd>
+        </p>
       </div>
 
       <div className="absolute inset-x-0 bottom-0 z-10 flex items-end justify-between p-6 md:p-10">

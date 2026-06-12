@@ -7,7 +7,7 @@ const BOOT_LINES = [
   "mounting workshop…",
   "calibrating grid…",
   "indexing field notes…",
-  "warming up particles…",
+  "warming up...",
 ];
 
 /**

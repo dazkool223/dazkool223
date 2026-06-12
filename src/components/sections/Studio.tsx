@@ -2,23 +2,32 @@
 
 /* eslint-disable @next/next/no-img-element */
 
+import Link from "next/link";
 import SectionHeading from "@/components/SectionHeading";
 import Reveal from "@/components/Reveal";
 import ViolinScene from "@/components/three/ViolinScene";
 import { studio } from "@/lib/data";
 
+export type StudioArticle = {
+  slug: string;
+  title: string;
+  date: string;
+  summary: string;
+  readingMinutes: number;
+};
+
 /**
- * The studio: violin, sketchbook, trail log. The human bits, given the same
- * care as the engineering ones.
+ * The studio: violin, sketchbook, trail log, and the journal. The human
+ * bits, given the same care as the engineering ones.
  */
-export default function Studio() {
+export default function Studio({ articles }: { articles: StudioArticle[] }) {
   return (
     <section
       id="studio"
       className="mx-auto max-w-7xl px-6 py-28 md:px-10 md:py-40"
     >
       <SectionHeading
-        index="07"
+        index="04"
         title="studio"
         note="the parts of me that don't compile"
       />
@@ -92,7 +101,7 @@ export default function Studio() {
       </div>
 
       {/* ---- the trail log ---- */}
-      <div>
+      <div className="mb-28">
         <Reveal>
           <p className="label-mono mb-8 text-accent">exhibit c - trail log</p>
         </Reveal>
@@ -119,12 +128,60 @@ export default function Studio() {
           ))}
           <div className="rule" />
         </div>
-        <Reveal>
-          <p className="mt-10 font-mono text-xs leading-relaxed text-faint">
-            <span className="text-accent">$</span> {studio.outro}
-          </p>
-        </Reveal>
       </div>
+
+      {/* ---- the journal ---- */}
+      <div id="journal">
+        <Reveal>
+          <div className="mb-2 flex items-baseline justify-between gap-6">
+            <p className="label-mono text-accent">exhibit d - the journal</p>
+            <span className="annotation hidden sm:inline">
+              longer-form thoughts, written slowly
+            </span>
+          </div>
+        </Reveal>
+        <div>
+          {articles.map((article, i) => (
+            <Reveal key={article.slug} delay={i * 0.05}>
+              <Link
+                href={`/journal/${article.slug}`}
+                data-cursor
+                className="group grid gap-3 border-t border-line py-8 transition-colors duration-500 hover:bg-accent-dim/40 md:grid-cols-12 md:gap-8"
+              >
+                <div className="md:col-span-2">
+                  <p className="font-mono text-xs tracking-[0.18em] text-accent">
+                    {article.date}
+                  </p>
+                  <p className="mt-1 font-mono text-[11px] text-faint">
+                    {article.readingMinutes} min read
+                  </p>
+                </div>
+                <h3 className="font-display text-xl font-medium tracking-tight transition-transform duration-500 group-hover:translate-x-3 md:col-span-5 md:text-2xl">
+                  {article.title}
+                </h3>
+                <div className="flex items-start justify-between gap-6 md:col-span-5">
+                  <p className="text-sm leading-relaxed text-muted">
+                    {article.summary}
+                  </p>
+                  <span
+                    aria-hidden
+                    className="mt-1 font-mono text-accent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                  >
+                    →
+                  </span>
+                </div>
+              </Link>
+            </Reveal>
+          ))}
+          <div className="rule" />
+        </div>
+      </div>
+
+      <Reveal>
+        <p className="mt-12 font-mono text-xs leading-relaxed text-faint">
+          <span className="text-accent">$</span> {studio.outro}
+        </p>
+      </Reveal>
     </section>
   );
 }

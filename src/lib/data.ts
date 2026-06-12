@@ -20,15 +20,11 @@ export const nav = [
   { index: "01", label: "readme", href: "#readme" },
   { index: "02", label: "worklog", href: "#worklog" },
   { index: "03", label: "experiments", href: "#experiments" },
-  { index: "04", label: "toolbench", href: "#toolbench" },
-  { index: "05", label: "notes", href: "#field-notes" },
-  { index: "06", label: "journal", href: "#journal" },
-  { index: "07", label: "studio", href: "#studio" },
-  { index: "08", label: "arcade", href: "#arcade" },
-  { index: "09", label: "contact", href: "#contact" },
+  { index: "04", label: "studio", href: "#studio" },
+  { index: "05", label: "contact", href: "#contact" },
 ];
 
-export const sectionTotal = "09";
+export const sectionTotal = "05";
 
 export const readme = {
   paragraphs: [
@@ -133,16 +129,6 @@ export const experiments: Experiment[] = [
     status: "forever WIP",
     year: "2024 -",
     stack: ["Kubernetes", "Helm", "Consul", "Vault"],
-  },
-  {
-    fig: "fig. 04",
-    name: "fragment",
-    tagline: "Micro frontends without tears",
-    description:
-      "A Module Federation starter kit: shared design tokens, independent deploys, one runtime. Born from production scar tissue.",
-    status: "v1.0",
-    year: "2025",
-    stack: ["React", "Module Federation", "TypeScript", "Jest"],
   },
 ];
 

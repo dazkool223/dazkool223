@@ -4,6 +4,7 @@ import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 import Cursor from "@/components/Cursor";
 import GridOverlay from "@/components/GridOverlay";
+import { themeInitScript } from "@/lib/themes";
 
 const grotesk = Space_Grotesk({
   variable: "--font-grotesk",
@@ -48,6 +49,8 @@ export default function RootLayout({
       className={`${grotesk.variable} ${plex.variable} ${newsreader.variable} h-full antialiased`}
     >
       <body className="min-h-full">
+        {/* applies the saved console theme before first paint */}
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript() }} />
         <SmoothScroll>
           {children}
           <Cursor />

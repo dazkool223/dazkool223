@@ -2,11 +2,13 @@
 
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
+import { tryCreateRenderer, readThemeColors } from "@/lib/three-utils";
 
 /**
  * The hero background: a plane of dots - graph paper come alive - rolling
  * with slow sine waves and rippling away from the cursor, plus a wireframe
  * icosahedron drifting overhead. Raw three.js, no framework wrapper.
+ * If WebGL is unavailable the static CSS grid stays as the backdrop.
  */
 export default function HeroScene() {
   const mountRef = useRef<HTMLDivElement>(null);
@@ -15,10 +17,15 @@ export default function HeroScene() {
     const mount = mountRef.current;
     if (!mount) return;
 
+    const renderer = tryCreateRenderer();
+    if (!renderer) return; // no WebGL: degrade to the CSS graph paper
+
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const colors = readThemeColors();
 
     const scene = new THREE.Scene();
-    scene.fog = new THREE.Fog(0x0d0c0a, 7, 24);
+    const fog = new THREE.Fog(new THREE.Color(colors.bg), 7, 24);
+    scene.fog = fog;
 
     const camera = new THREE.PerspectiveCamera(
       55,
@@ -29,7 +36,6 @@ export default function HeroScene() {
     camera.position.set(0, 2.4, 9);
     camera.lookAt(0, 0, 0);
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setSize(mount.clientWidth, mount.clientHeight);
     mount.appendChild(renderer.domElement);
@@ -60,7 +66,7 @@ export default function HeroScene() {
     const geo = new THREE.BufferGeometry();
     geo.setAttribute("position", new THREE.BufferAttribute(positions, 3));
     const mat = new THREE.PointsMaterial({
-      color: 0x938b7b,
+      color: new THREE.Color(colors.muted),
       size: 0.032,
       transparent: true,
       opacity: 0.75,
@@ -72,16 +78,26 @@ export default function HeroScene() {
     scene.add(points);
 
     // --- wireframe icosahedron, the lone exhibit above the desk ---
+    const icoMat = new THREE.LineBasicMaterial({
+      color: new THREE.Color(colors.accent),
+      transparent: true,
+      opacity: 0.4,
+    });
     const ico = new THREE.LineSegments(
       new THREE.EdgesGeometry(new THREE.IcosahedronGeometry(1.4, 1)),
-      new THREE.LineBasicMaterial({
-        color: 0xff5c1c,
-        transparent: true,
-        opacity: 0.4,
-      })
+      icoMat
     );
     ico.position.set(2.8, 1.4, 1.5);
     scene.add(ico);
+
+    // recolor when the console switches themes
+    const onTheme = () => {
+      const next = readThemeColors();
+      fog.color.set(next.bg);
+      mat.color.set(next.muted);
+      icoMat.color.set(next.accent);
+    };
+    window.addEventListener("workshop:theme", onTheme);
 
     // --- pointer tracking (normalized, lerped) ---
     const mouse = { x: 0, y: 0, tx: 0, ty: 0 };
@@ -147,12 +163,13 @@ export default function HeroScene() {
 
     return () => {
       renderer.setAnimationLoop(null);
+      window.removeEventListener("workshop:theme", onTheme);
       window.removeEventListener("pointermove", onPointer);
       window.removeEventListener("resize", onResize);
       geo.dispose();
       mat.dispose();
       ico.geometry.dispose();
-      (ico.material as THREE.Material).dispose();
+      icoMat.dispose();
       renderer.dispose();
       mount.removeChild(renderer.domElement);
     };

@@ -2,8 +2,14 @@
 
 import SectionHeading from "@/components/SectionHeading";
 import Reveal from "@/components/Reveal";
+import ToolbenchPanel from "@/components/ToolbenchPanel";
+import FieldNotesStrip from "@/components/FieldNotesStrip";
 import { experiments } from "@/lib/data";
 
+/**
+ * The lab: side projects, the toolbench behind them, and the field notes
+ * that came out of building it all. One section, three benches.
+ */
 export default function Experiments() {
   return (
     <section
@@ -13,9 +19,10 @@ export default function Experiments() {
       <SectionHeading
         index="03"
         title="experiments"
-        note="side projects, in lab-notebook form"
+        note="projects, tools and lessons - the whole lab"
       />
 
+      {/* ---- the projects ---- */}
       <div>
         {experiments.map((exp, i) => (
           <Reveal key={exp.name} delay={i * 0.04}>
@@ -65,6 +72,32 @@ export default function Experiments() {
           results not guaranteed. learning is.
         </p>
       </Reveal>
+
+      {/* ---- the toolbench ---- */}
+      <div className="mt-28">
+        <Reveal>
+          <div className="mb-10 flex items-baseline justify-between gap-6">
+            <p className="label-mono text-accent">bench 02 - the toolbench</p>
+            <span className="annotation hidden sm:inline">
+              every tool has a story - inspect one
+            </span>
+          </div>
+        </Reveal>
+        <ToolbenchPanel />
+      </div>
+
+      {/* ---- the field notes ---- */}
+      <div className="mt-28">
+        <Reveal>
+          <div className="mb-10 flex items-baseline justify-between gap-6">
+            <p className="label-mono text-accent">bench 03 - field notes</p>
+            <span className="annotation hidden sm:inline">
+              a digital garden - swipe through it →
+            </span>
+          </div>
+        </Reveal>
+        <FieldNotesStrip />
+      </div>
     </section>
   );
 }

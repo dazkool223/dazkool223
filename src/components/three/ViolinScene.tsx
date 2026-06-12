@@ -1,11 +1,14 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import * as THREE from "three";
+/* eslint-disable @next/next/no-img-element */
 
-const ACCENT = 0xff5c1c;
+import { useEffect, useRef, useState } from "react";
+import * as THREE from "three";
+import { tryCreateRenderer, readThemeColors } from "@/lib/three-utils";
+
 const WOOD = 0x1c1916;
-const STRING = 0xe9e4d8;
+
+type Palette = { accent: THREE.LineBasicMaterial[]; strings: THREE.LineBasicMaterial; scroll: THREE.MeshBasicMaterial };
 
 /** Dark box with accent edge lines - the "blueprint exhibit" look. */
 function blueprintBox(
@@ -14,7 +17,9 @@ function blueprintBox(
   d: number,
   x: number,
   y: number,
-  z: number
+  z: number,
+  palette: Palette,
+  accentHex: string
 ) {
   const group = new THREE.Group();
   const geo = new THREE.BoxGeometry(w, h, d);
@@ -22,10 +27,13 @@ function blueprintBox(
     geo,
     new THREE.MeshBasicMaterial({ color: WOOD })
   );
-  const edges = new THREE.LineSegments(
-    new THREE.EdgesGeometry(geo),
-    new THREE.LineBasicMaterial({ color: ACCENT, transparent: true, opacity: 0.7 })
-  );
+  const edgeMat = new THREE.LineBasicMaterial({
+    color: new THREE.Color(accentHex),
+    transparent: true,
+    opacity: 0.7,
+  });
+  palette.accent.push(edgeMat);
+  const edges = new THREE.LineSegments(new THREE.EdgesGeometry(geo), edgeMat);
   group.add(mesh, edges);
   group.position.set(x, y, z);
   return group;
@@ -50,8 +58,22 @@ function violinShape() {
   return s;
 }
 
-function buildViolin() {
+function buildViolin(accentHex: string, inkHex: string) {
   const violin = new THREE.Group();
+  const palette: Palette = {
+    accent: [],
+    strings: new THREE.LineBasicMaterial({
+      color: new THREE.Color(inkHex),
+      transparent: true,
+      opacity: 0.6,
+    }),
+    scroll: new THREE.MeshBasicMaterial({
+      color: new THREE.Color(accentHex),
+      wireframe: true,
+      transparent: true,
+      opacity: 0.45,
+    }),
+  };
 
   // --- body: extruded shape + outline contours front and back ---
   const shape = violinShape();
@@ -72,9 +94,13 @@ function buildViolin() {
     .map((p) => new THREE.Vector3(p.x, p.y, 0));
   for (const z of [0.18, -0.18]) {
     const pts = contourPts.map((p) => new THREE.Vector3(p.x, p.y, z));
+    const contourMat = new THREE.LineBasicMaterial({
+      color: new THREE.Color(accentHex),
+    });
+    palette.accent.push(contourMat);
     const contour = new THREE.LineLoop(
       new THREE.BufferGeometry().setFromPoints(pts),
-      new THREE.LineBasicMaterial({ color: ACCENT })
+      contourMat
     );
     violin.add(contour);
   }
@@ -87,27 +113,28 @@ function buildViolin() {
       new THREE.Vector3(side * 0.24, -0.05, 0.18),
       new THREE.Vector3(side * 0.46, 0.2, 0.18)
     );
+    const fMat = new THREE.LineBasicMaterial({
+      color: new THREE.Color(accentHex),
+      transparent: true,
+      opacity: 0.8,
+    });
+    palette.accent.push(fMat);
     const fHole = new THREE.Line(
       new THREE.BufferGeometry().setFromPoints(curve.getPoints(28)),
-      new THREE.LineBasicMaterial({ color: ACCENT, transparent: true, opacity: 0.8 })
+      fMat
     );
     violin.add(fHole);
   }
 
   // --- neck, fingerboard, pegbox ---
-  violin.add(blueprintBox(0.16, 1.0, 0.12, 0, 2.0, 0));
-  violin.add(blueprintBox(0.24, 2.1, 0.05, 0, 1.35, 0.2));
-  violin.add(blueprintBox(0.2, 0.52, 0.14, 0, 2.72, 0));
+  violin.add(blueprintBox(0.16, 1.0, 0.12, 0, 2.0, 0, palette, accentHex));
+  violin.add(blueprintBox(0.24, 2.1, 0.05, 0, 1.35, 0.2, palette, accentHex));
+  violin.add(blueprintBox(0.2, 0.52, 0.14, 0, 2.72, 0, palette, accentHex));
 
   // --- scroll: a small torus where the spiral would be ---
   const scroll = new THREE.Mesh(
     new THREE.TorusGeometry(0.12, 0.035, 6, 20),
-    new THREE.MeshBasicMaterial({
-      color: ACCENT,
-      wireframe: true,
-      transparent: true,
-      opacity: 0.45,
-    })
+    palette.scroll
   );
   scroll.position.set(0, 3.08, 0);
   violin.add(scroll);
@@ -130,15 +157,10 @@ function buildViolin() {
   }
 
   // --- bridge + tailpiece ---
-  violin.add(blueprintBox(0.5, 0.26, 0.04, 0, -0.55, 0.21));
-  violin.add(blueprintBox(0.26, 0.55, 0.04, 0, -1.42, 0.2));
+  violin.add(blueprintBox(0.5, 0.26, 0.04, 0, -0.55, 0.21, palette, accentHex));
+  violin.add(blueprintBox(0.26, 0.55, 0.04, 0, -1.42, 0.2, palette, accentHex));
 
   // --- four strings, tailpiece to nut ---
-  const stringMat = new THREE.LineBasicMaterial({
-    color: STRING,
-    transparent: true,
-    opacity: 0.6,
-  });
   for (let i = 0; i < 4; i++) {
     const x = -0.075 + i * 0.05;
     const pts = [
@@ -147,25 +169,37 @@ function buildViolin() {
       new THREE.Vector3(x * 0.6, 2.42, 0.2),
     ];
     violin.add(
-      new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), stringMat)
+      new THREE.Line(
+        new THREE.BufferGeometry().setFromPoints(pts),
+        palette.strings
+      )
     );
   }
 
-  return violin;
+  return { violin, palette };
 }
 
 /**
  * A violin built from nothing but primitives and bézier curves - no model
- * file. Drag to rotate; it keeps spinning gently when left alone.
+ * file. Drag to rotate; it keeps spinning gently when left alone. Falls
+ * back to the sketchbook drawing when WebGL isn't available.
  */
 export default function ViolinScene() {
   const mountRef = useRef<HTMLDivElement>(null);
+  const [fallback, setFallback] = useState(false);
 
   useEffect(() => {
     const mount = mountRef.current;
     if (!mount) return;
 
+    const renderer = tryCreateRenderer();
+    if (!renderer) {
+      setFallback(true);
+      return;
+    }
+
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const colors = readThemeColors();
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
@@ -176,15 +210,23 @@ export default function ViolinScene() {
     );
     camera.position.set(0, 0.55, 7.2);
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setSize(mount.clientWidth, mount.clientHeight);
     mount.appendChild(renderer.domElement);
 
-    const violin = buildViolin();
+    const { violin, palette } = buildViolin(colors.accent, colors.ink);
     violin.position.y = -0.62;
     violin.rotation.y = -0.5;
     scene.add(violin);
+
+    // recolor when the console switches themes
+    const onTheme = () => {
+      const next = readThemeColors();
+      palette.accent.forEach((m) => m.color.set(next.accent));
+      palette.strings.color.set(next.ink);
+      palette.scroll.color.set(next.accent);
+    };
+    window.addEventListener("workshop:theme", onTheme);
 
     // drag-to-rotate with inertia; gentle auto-spin when idle
     let dragging = false;
@@ -245,6 +287,7 @@ export default function ViolinScene() {
     return () => {
       renderer.setAnimationLoop(null);
       ro.disconnect();
+      window.removeEventListener("workshop:theme", onTheme);
       mount.removeEventListener("pointerdown", down);
       window.removeEventListener("pointermove", move);
       window.removeEventListener("pointerup", up);
@@ -259,7 +302,22 @@ export default function ViolinScene() {
     };
   }, []);
 
+  if (fallback) {
+    return (
+      <img
+        src="/art/sketch-02.svg"
+        alt="pencil sketch of a violin"
+        className="h-full w-full object-cover"
+      />
+    );
+  }
+
+  // pan-y keeps vertical page scrolling alive on touch screens
   return (
-    <div ref={mountRef} className="h-full w-full touch-none" aria-hidden />
+    <div
+      ref={mountRef}
+      aria-hidden
+      className="h-full w-full [touch-action:pan-y]"
+    />
   );
 }
