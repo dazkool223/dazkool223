@@ -6,7 +6,10 @@ import { readme } from "@/lib/data";
 
 export default function Readme() {
   return (
-    <section id="readme" className="mx-auto max-w-7xl px-6 py-28 md:px-10 md:py-40">
+    <section
+      id="readme"
+      className="mx-auto max-w-7xl px-6 py-24 md:px-10 md:py-40"
+    >
       <SectionHeading
         index="01"
         title="readme.md"

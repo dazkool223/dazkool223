@@ -62,7 +62,7 @@ export default function Studio({ articles }: { articles: StudioArticle[] }) {
       </div>
 
       {/* ---- the sketchbook ---- */}
-      <div className="mb-28">
+      {/* <div className="mb-28">
         <Reveal>
           <p className="label-mono mb-8 text-accent">exhibit b - sketchbook</p>
         </Reveal>
@@ -98,12 +98,12 @@ export default function Studio({ articles }: { articles: StudioArticle[] }) {
             slower than ctrl+z, better for thinking
           </p>
         </Reveal>
-      </div>
+      </div> */}
 
       {/* ---- the trail log ---- */}
       <div className="mb-28">
         <Reveal>
-          <p className="label-mono mb-8 text-accent">exhibit c - trail log</p>
+          <p className="label-mono mb-8 text-accent">exhibit b - trail log</p>
         </Reveal>
         <div>
           {studio.treks.map((trek, i) => (
@@ -131,7 +131,7 @@ export default function Studio({ articles }: { articles: StudioArticle[] }) {
       </div>
 
       {/* ---- the journal ---- */}
-      <div id="journal">
+      {/* <div id="journal">
         <Reveal>
           <div className="mb-2 flex items-baseline justify-between gap-6">
             <p className="label-mono text-accent">exhibit d - the journal</p>
@@ -175,7 +175,7 @@ export default function Studio({ articles }: { articles: StudioArticle[] }) {
           ))}
           <div className="rule" />
         </div>
-      </div>
+      </div> */}
 
       <Reveal>
         <p className="mt-12 font-mono text-xs leading-relaxed text-faint">

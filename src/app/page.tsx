@@ -8,6 +8,7 @@ import Experiments from "@/components/sections/Experiments";
 import Studio from "@/components/sections/Studio";
 import Footer from "@/components/sections/Footer";
 import { getArticles, formatDate } from "@/lib/articles";
+import Marquee from "@/components/Marquee";
 
 export default function Home() {
   const articles = getArticles().map(
@@ -28,8 +29,9 @@ export default function Home() {
       <main>
         <Hero />
         <Readme />
+        <Marquee />
         <Worklog />
-        <Experiments />
+        {/* <Experiments /> */}
         <Studio articles={articles} />
       </main>
       <Footer />

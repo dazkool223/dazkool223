@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Space_Grotesk, IBM_Plex_Mono, Newsreader } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
@@ -47,10 +48,17 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${grotesk.variable} ${plex.variable} ${newsreader.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full">
+      <head>
         {/* applies the saved console theme before first paint */}
-        <script dangerouslySetInnerHTML={{ __html: themeInitScript() }} />
+        <Script
+          id="theme-init"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: themeInitScript() }}
+        />
+      </head>
+      <body className="min-h-full">
         <SmoothScroll>
           {children}
           <Cursor />

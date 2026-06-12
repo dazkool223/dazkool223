@@ -32,7 +32,9 @@ export default function Experiments() {
             >
               <div className="flex items-start justify-between md:col-span-2 md:block">
                 <p className="font-mono text-xs text-accent">{exp.fig}</p>
-                <p className="font-mono text-xs text-faint md:mt-2">{exp.year}</p>
+                <p className="font-mono text-xs text-faint md:mt-2">
+                  {exp.year}
+                </p>
               </div>
 
               <div className="md:col-span-6">
@@ -79,23 +81,15 @@ export default function Experiments() {
           <div className="mb-10 flex items-baseline justify-between gap-6">
             <p className="label-mono text-accent">bench 02 - the toolbench</p>
             <span className="annotation hidden sm:inline">
-              every tool has a story - inspect one
+              expert in whatever I learnt last week.
             </span>
           </div>
         </Reveal>
         <ToolbenchPanel />
       </div>
 
-      {/* ---- the field notes ---- */}
-      <div className="mt-28">
-        <Reveal>
-          <div className="mb-10 flex items-baseline justify-between gap-6">
-            <p className="label-mono text-accent">bench 03 - field notes</p>
-            <span className="annotation hidden sm:inline">
-              a digital garden - swipe through it →
-            </span>
-          </div>
-        </Reveal>
+      {/* ---- the field notes (heading lives inside the pinned strip) ---- */}
+      <div className="mt-16 md:mt-0">
         <FieldNotesStrip />
       </div>
     </section>

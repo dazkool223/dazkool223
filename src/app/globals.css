@@ -116,6 +116,14 @@ body {
   animation-play-state: paused;
 }
 
+/* hide scrollbars on swipe strips without disabling scrolling */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 /* index-card look for field notes */
 .note-card {
   background: var(--surface);

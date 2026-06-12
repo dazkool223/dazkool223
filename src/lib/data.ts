@@ -19,26 +19,34 @@ export const profile = {
 export const nav = [
   { index: "01", label: "readme", href: "#readme" },
   { index: "02", label: "worklog", href: "#worklog" },
-  { index: "03", label: "experiments", href: "#experiments" },
-  { index: "04", label: "studio", href: "#studio" },
-  { index: "05", label: "contact", href: "#contact" },
+  // { index: "03", label: "experiments", href: "#experiments" },
+  { index: "03", label: "studio", href: "#studio" },
+  { index: "04", label: "contact", href: "#contact" },
 ];
 
 export const sectionTotal = "05";
 
 export const readme = {
   paragraphs: [
-    "I'm Neeraj - a fullstack engineer at Qualys who got into software the same way I get into everything: by taking it apart to see why it works. The first program I ever wrote failed in an interesting way, and I've been chasing that feeling ever since.",
-    "By day I build security platform features - React micro frontends talking to Spring Boot services, with Kafka somewhere in the middle doing the heavy lifting. By night the laptop stays open: LLM agents, retrieval pipelines, and a homelab held together by Helm charts and optimism.",
-    "But the keyboard is only half of it. There's a violin that gets played most evenings, a sketchbook full of graphite, and a pair of boots that have been up more Himalayan trails than I can justify. The same curiosity drives all of it - code just happens to be the part that pays.",
-    "I keep this site like a lab notebook. Not everything in it is polished - that's the point. The interesting part of engineering is the part where you don't know the answer yet.",
+    "I'm Neeraj. Fullstack engineer at Qualys by day, tabs-always-open researcher by night. I got into software the way I get into most things - by taking apart something I probably shouldn't have. The first program I wrote failed in an interesting way. I've been chasing that feeling ever since.",
+    "The day job is building security platform features: frontends talking to services, Kafka pipelines holding it all together with retry configs and a lot of optimism.",
+    "The night work is different. LLM agents that actually do something useful. I'm interested in what happens when you build AI tools for yourself - not demos, not prototypes. Things you actually run.",
+    "There's also a violin that gets played most evenings, a sketchbook, and a pair of boots with Himalayan mud still on them. I don't think of these as separate from engineering.",
+    "Not everything here is polished - that's intentional. The interesting part of engineering is the bit before you know the answer.",
+  ],
+  stats: [
+    { value: "2 yrs", label: "shipping to prod" },
+    { value: "2", label: "Himalayan treks" },
+    { value: "∞", label: "debugging hours" },
   ],
   currently: [
-    { label: "building", value: "a local-first RAG over my own notes" },
-    { label: "reading", value: "Designing Data-Intensive Applications, again" },
-    { label: "practicing", value: "vibrato. the neighbours are patient" },
-    { label: "planning", value: "the next trek before the last one fades" },
-    { label: "wondering", value: "when an agent should refuse to act" },
+    { label: "building", value: "something nobody cares" },
+    { label: "practicing", value: "vibrato. parents still patient" },
+    {
+      label: "planning",
+      value: "next trek. before the previous one fades from memory",
+    },
+    { label: "wondering", value: "is it really worth it?" },
   ],
 };
 
@@ -56,18 +64,14 @@ export const worklog: WorklogEntry[] = [
     role: "Fullstack Software Engineer",
     org: "Qualys",
     notes: [
-      "Building micro frontends with Module Federation across a security platform used by enterprises - independent deploys, one seamless runtime.",
-      "Designing Spring Boot services, Kafka pipelines and Redis caching: the unglamorous plumbing that makes dashboards feel instant.",
-      "Prototyping LLM-assisted features - retrieval over product knowledge with LangChain, ChromaDB and a healthy distrust of vector similarity.",
+      "Core contributor to a data ingestion service using Java / Spring Boot that processes third-party asset and vulnerability feeds for risk calculation and security dashboards",
+      "Built a LangChain + RAG-based schema transformation agent that automated mapping of third-party data contracts internal models, eliminating 100+ manual engineering hours per cycle and improving mapping consistency by 85%.",
+      "Identified and resolved the leading cause of integration deployment failures by building a centralized configuration management system which decoupled business logic from deployment artifacts.",
+      "Designed and built a configuration-driven React micro-frontend supporting 60+ integration-specific workflows with runtime reconfigurability, reducing code complexity by ~90%.",
+      "Contributed to FedRAMP High compliance hardening across 6 microservices implementing FIPS-compliant encryption, audit logging, and secret rotation via HashiCorp Vault.",
+      "Prototyped a zero-trust data ingestion SDK that isolates partner data streams at the network boundary, ensuring secure third-party integrations.",
     ],
-    stack: [
-      "React",
-      "Module Federation",
-      "Spring Boot",
-      "Kafka",
-      "Redis",
-      "LangChain",
-    ],
+    stack: ["Spring Boot", "React", "Kafka", "Redis", "LangChain"],
   },
   {
     period: "JAN 2024",
@@ -75,7 +79,7 @@ export const worklog: WorklogEntry[] = [
     org: "Qualys",
     notes: [
       "Shipped my first production code and learned the difference between “works on my machine” and “works”.",
-      "Discovered that reading other people's code is a skill, and that the codebase is the real documentation.",
+      "Discovered that reading other people's code is a skill, the codebase is the real documentation and that people working there also have no idea about what they are doing",
     ],
     stack: ["Java", "JUnit", "Oracle SQL", "Git"],
   },
@@ -177,16 +181,6 @@ export const toolbench: Tool[] = [
     note: "State management without the boilerplate guilt.",
   },
   {
-    name: "Micro Frontends",
-    group: "frontend",
-    note: "Conway's law, but make it deployable.",
-  },
-  {
-    name: "Module Federation",
-    group: "frontend",
-    note: "Independent deploys, one runtime. Magic with footguns.",
-  },
-  {
     name: "Jest",
     group: "frontend",
     note: "Red, green, refactor. Mostly red at first.",
@@ -258,7 +252,11 @@ export const toolbench: Tool[] = [
     group: "ai",
     note: "Where my embeddings sleep at night.",
   },
-  { name: "Ollama", group: "ai", note: "Local models. My GPU has opinions." },
+  {
+    name: "Ollama",
+    group: "ai",
+    note: "Local models. My GPU has different opinions.",
+  },
   {
     name: "Hugging Face",
     group: "ai",
@@ -317,66 +315,55 @@ export type FieldNote = {
 export const fieldNotes: FieldNote[] = [
   {
     id: "001",
-    topic: "on kafka",
-    body: "Partitions aren't queues. Consumer groups finally clicked the day I stopped pretending they were.",
+    topic: "on coding",
+    body: "Art is what makes us human, coding just helps me pay the bills",
   },
   {
     id: "002",
-    topic: "on retrieval",
-    body: "Vector similarity is not relevance. Skipping the reranker is how RAG demos die in production.",
+    topic: "on frontends",
+    body: "CSS IS FUCKING STUPID",
   },
   {
     id: "003",
-    topic: "on secrets",
-    body: "Vault's dynamic database credentials expire before the standup ends. This still feels like magic.",
+    topic: "on debugging",
+    body: "If you can't reproduce it, you don't have a bug",
   },
   {
     id: "004",
-    topic: "on frontends",
-    body: "Every micro frontend boundary is an org-chart decision in disguise. Conway was right.",
+    topic: "on agents",
+    body: "An agent is just an expensive while(true) invented by capitalistic corporate evils",
   },
   {
     id: "005",
-    topic: "on debugging",
-    body: "If you can't reproduce it, you don't have a bug - you have a ghost story.",
+    topic: "on learning",
+    body: "Try to learn everything just to forget everything at the exact moment you need it",
   },
   {
     id: "006",
-    topic: "on agents",
-    body: "An agent without an exit condition is just an expensive while(true).",
+    topic: "on music",
+    body: "Listening to Bhaavgeet, Heavy Metal, Techno and Hindustani Classical depending on the mood",
   },
   {
     id: "007",
-    topic: "on learning",
-    body: "Reading the docs end-to-end is a superpower disguised as a chore.",
+    topic: "on trekking",
+    body: "Mountains teach you to be humble, very much unlike the rest of my life /s",
   },
   {
     id: "008",
     topic: "on this site",
-    body: "Built with Next.js 16, GSAP and three.js - mostly to find out how the award-winning sites do it.",
-  },
-  {
-    id: "009",
-    topic: "on violin",
-    body: "Vibrato is controlled instability. So is most production infrastructure.",
-  },
-  {
-    id: "010",
-    topic: "on trekking",
-    body: "Mountains teach pacing. You don't summit by sprinting the first kilometre.",
+    body: "Vibe coded this, mostly to find out how the award-winning sites do it.",
   },
 ];
 
 export const studio = {
-  intro:
-    "The part of me that doesn't compile. An engineer is the worst thing to be full-time - so I'm not.",
+  intro: "Jack of all trades - Master at nothing, better than master of one",
   violin: {
     title: "the violin",
     paragraphs: [
-      "The oldest project I maintain. No version control, no logs, no rollback - just muscle memory and a bow that tells me immediately when I've shipped a bad note.",
-      "Practice taught me more about debugging than any book: slow the passage down, isolate the broken bar, listen before you fix. Then play it at tempo and watch it break differently.",
+      "Just muscle memory and a bow that tells me immediately when I've play a bad note. Thousands of mistakes later, it almost sounds intentional.",
+      "Practice taught me more about chasing perfection than any other book: listen to the piece and isolate the broken verse. Then play it at tempo and watch it break differently. YOU JUST CAN'T HAVE IT ALL!",
     ],
-    hint: "drag to rotate - no model file, just bézier curves and three.js",
+    hint: "drag to rotate",
   },
   sketches: [
     // TODO(neeraj): scan your sketches into /public/art and update these
@@ -396,33 +383,32 @@ export const studio = {
       note: "graphite · HB",
     },
   ],
-  // TODO(neeraj): replace with your actual treks + numbers
   treks: [
     {
-      name: "Kedarkantha",
+      name: "Kuari Pass",
+      region: "Garhwal Himalaya",
+      elevation: "12,500 ft",
+      note: "Two valleys, two climates, one very wet tent.",
+    },
+    {
+      name: "Chandrashila",
       region: "Garhwal Himalaya",
       elevation: "12,500 ft",
       note: "Summit at sunrise. Understood immediately why people keep going back.",
     },
     {
-      name: "Hampta Pass",
-      region: "Himachal",
-      elevation: "14,100 ft",
-      note: "Two valleys, two climates, one very wet tent.",
-    },
-    {
-      name: "Triund",
-      region: "Dharamkot",
-      elevation: "9,350 ft",
-      note: "The starter trek that started everything.",
-    },
-    {
-      name: "Monsoon forts",
-      region: "Western Ghats",
+      name: "Forts in Sahyadri",
+      region: "Maharashtra",
       elevation: "~4,500 ft",
-      note: "Home turf. No signal, plenty of fog - the fog is a feature.",
+      note: "Home turf. No signal, plenty of rain - the rain is a feature.",
+    },
+    {
+      name: "Bed to Chair",
+      region: "Home",
+      elevation: "~3 ft",
+      note: "Training for Everest by repeatedly summiting my chair.",
     },
   ],
   outro:
-    "also in rotation: film scores while coding, old laptops reborn as linux servers, and a learning queue that only grows.",
+    "also in rotation: I watch films, webseries, play badminton and touch grass occasionally",
 };

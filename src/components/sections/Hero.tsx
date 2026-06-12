@@ -53,7 +53,7 @@ export default function Hero() {
               duration: 0.9,
               ease: "power3.out",
             },
-            "-=0.55"
+            "-=0.55",
           );
 
         if (readyFired) tl.play();
@@ -64,7 +64,7 @@ export default function Hero() {
         window.removeEventListener("workshop:ready", onReady);
       };
     },
-    { scope: ref }
+    { scope: ref },
   );
 
   return (
@@ -82,14 +82,13 @@ export default function Hero() {
         </p>
 
         <h1 className="split-clip font-display text-[clamp(3.2rem,11vw,9rem)] font-medium leading-[0.92] tracking-tight opacity-0">
-          I build to
+          F*ck around<span className="text-accent">,</span>
           <br />
-          understand<span className="text-accent">.</span>
+          Find out<span className="text-accent">.</span>
         </h1>
 
         <p className="hero-fade mt-8 max-w-md text-base leading-relaxed text-muted md:text-lg">
-          Fullstack engineer at {profile.org}. Part lab notebook, part
-          playground - all work in progress.
+          Fullstack engineer. Building the things I wish existed.
         </p>
 
         <p className="hero-fade mt-6 font-mono text-xs leading-relaxed text-faint">
@@ -111,7 +110,7 @@ export default function Hero() {
       <div className="absolute inset-x-0 bottom-0 z-10 flex items-end justify-between p-6 md:p-10">
         <span className="hero-fade label-mono">scroll to enter ↓</span>
         <span className="hero-fade annotation hidden md:inline">
-          fig. 0 - graph paper, come alive. drag your cursor through it.
+          fig. 0 - graph paper, comes alive. drag your cursor through it.
         </span>
       </div>
     </section>

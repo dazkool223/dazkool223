@@ -5,47 +5,23 @@ import Reveal from "@/components/Reveal";
 import Magnetic from "@/components/Magnetic";
 import { profile } from "@/lib/data";
 
-const MARQUEE_ITEMS = [
-  "open to interesting problems",
-  "currently caffeinated",
-  "ship small, learn fast",
-  "ask me about kafka partitions",
-];
 
 export default function Footer() {
   return (
     <footer id="contact" className="relative">
-      {/* marquee */}
-      <div className="overflow-hidden border-y border-line py-4">
-        <div className="marquee-track flex w-max whitespace-nowrap">
-          {[0, 1].map((copy) => (
-            <div key={copy} className="flex shrink-0" aria-hidden={copy === 1}>
-              {MARQUEE_ITEMS.map((item) => (
-                <span
-                  key={`${copy}-${item}`}
-                  className="label-mono mx-6 !text-sm"
-                >
-                  {item} <span className="ml-12 text-accent">✺</span>
-                </span>
-              ))}
-            </div>
-          ))}
-        </div>
-      </div>
-
       <div className="mx-auto max-w-7xl px-6 py-28 md:px-10 md:py-36">
         <SectionHeading
           index="05"
           title="say hello"
-          note="the inbox is always compiling"
+          note="the inbox is always full /s"
         />
 
         <div className="grid gap-12 md:grid-cols-12">
           <Reveal className="md:col-span-7">
             <p className="max-w-lg text-lg leading-relaxed text-muted md:text-xl">
-              If you're building something interesting - or just want to argue
-              about retrieval pipelines, micro frontend boundaries, or whether
-              the homelab was a good idea - my door is open.
+              If you're building something interesting or just want to have a
+              passionate debate about something completely unimportant - my door
+              is open.
             </p>
 
             <div className="mt-12 flex flex-wrap gap-4">
