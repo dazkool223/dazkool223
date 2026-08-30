@@ -19,9 +19,9 @@ export const profile = {
 export const nav = [
   { index: "01", label: "readme", href: "#readme" },
   { index: "02", label: "worklog", href: "#worklog" },
-  // { index: "03", label: "experiments", href: "#experiments" },
-  { index: "03", label: "studio", href: "#studio" },
-  { index: "04", label: "contact", href: "#contact" },
+  { index: "03", label: "experiments", href: "#experiments" },
+  { index: "04", label: "studio", href: "#studio" },
+  { index: "05", label: "contact", href: "#contact" },
 ];
 
 export const sectionTotal = "05";
@@ -101,38 +101,50 @@ export type Experiment = {
   status: string;
   year: string;
   stack: string[];
+  url?: string;
 };
 
 export const experiments: Experiment[] = [
+  // {
+  //   fig: "fig. 01",
+  //   name: "recall",
+  //   tagline: "A second brain that actually remembers",
+  //   description:
+  //     "Local-first RAG over my markdown notes. Ollama for embeddings and generation, ChromaDB for vectors, FastAPI in between. Citations or it didn't happen.",
+  //   status: "v0.3 · in daily use",
+  //   year: "2025",
+  //   stack: ["Python", "FastAPI", "ChromaDB", "Ollama"],
+  // },
+  // {
+  //   fig: "fig. 02",
+  //   name: "agent-loop",
+  //   tagline: "How many agents is too many?",
+  //   description:
+  //     "A LangGraph playground for multi-agent workflows with human-in-the-loop checkpoints. Mostly an exercise in teaching agents when to stop.",
+  //   status: "in progress",
+  //   year: "2026",
+  //   stack: ["LangGraph", "LangChain", "Anthropic API"],
+  // },
+  // {
+  //   fig: "fig. 03",
+  //   name: "homelab",
+  //   tagline: "A single-node Kubernetes cluster nobody asked for",
+  //   description:
+  //     "K8s, Helm, Consul and Vault running on a reclaimed machine in the corner of my room. It hosts my experiments, and my humility.",
+  //   status: "forever WIP",
+  //   year: "2024 -",
+  //   stack: ["Kubernetes", "Helm", "Consul", "Vault"],
+  // },
   {
     fig: "fig. 01",
-    name: "recall",
-    tagline: "A second brain that actually remembers",
+    name: "jigsaw",
+    tagline: "A puzzle app that pieces itself together, mostly.",
     description:
-      "Local-first RAG over my markdown notes. Ollama for embeddings and generation, ChromaDB for vectors, FastAPI in between. Citations or it didn't happen.",
-    status: "v0.3 · in daily use",
-    year: "2025",
-    stack: ["Python", "FastAPI", "ChromaDB", "Ollama"],
-  },
-  {
-    fig: "fig. 02",
-    name: "agent-loop",
-    tagline: "How many agents is too many?",
-    description:
-      "A LangGraph playground for multi-agent workflows with human-in-the-loop checkpoints. Mostly an exercise in teaching agents when to stop.",
-    status: "in progress",
+      "A multiplayer jigsaw puzzle built on WebRTC, because solving one alone apparently wasn't chaotic enough. Teamwork, questionable piece placement, and mild frustration - all in real time.",
+    status: "it works on your machine too",
     year: "2026",
-    stack: ["LangGraph", "LangChain", "Anthropic API"],
-  },
-  {
-    fig: "fig. 03",
-    name: "homelab",
-    tagline: "A single-node Kubernetes cluster nobody asked for",
-    description:
-      "K8s, Helm, Consul and Vault running on a reclaimed machine in the corner of my room. It hosts my experiments, and my humility.",
-    status: "forever WIP",
-    year: "2024 -",
-    stack: ["Kubernetes", "Helm", "Consul", "Vault"],
+    stack: ["Vite", "WebRTC", "Supabase", "Vercel"],
+    url: "https://jigsaw.neerajkulkarni.in",
   },
 ];
 

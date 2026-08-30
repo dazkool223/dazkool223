@@ -31,7 +31,7 @@ export default function Home() {
         <Readme />
         <Marquee />
         <Worklog />
-        {/* <Experiments /> */}
+        <Experiments />
         <Studio articles={articles} />
       </main>
       <Footer />
