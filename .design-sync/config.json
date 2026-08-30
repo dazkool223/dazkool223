@@ -1,0 +1,26 @@
+{
+  "projectId": "c086ec08-4309-455b-9ded-2f6ded5f2e59",
+  "shape": "package",
+  "pkg": "dazkool",
+  "globalName": "DigitalWorkshop",
+  "entry": ".design-sync/entry.mjs",
+  "buildCmd": "npm run build && node .design-sync/prepare-css.mjs",
+  "cssEntry": ".next/static/chunks/_ds-styles.css",
+  "tsconfig": "tsconfig.json",
+  "readmeHeader": ".design-sync/conventions.md",
+  "componentSrcMap": {
+    "Reveal": "src/components/Reveal.tsx",
+    "Magnetic": "src/components/Magnetic.tsx",
+    "SectionHeading": "src/components/SectionHeading.tsx",
+    "Marquee": "src/components/Marquee.tsx",
+    "GridOverlay": "src/components/GridOverlay.tsx",
+    "ToolbenchPanel": "src/components/ToolbenchPanel.tsx",
+    "FieldNotesStrip": "src/components/FieldNotesStrip.tsx"
+  },
+  "overrides": {
+    "FieldNotesStrip": { "cardMode": "column" },
+    "ToolbenchPanel": { "cardMode": "column" },
+    "SectionHeading": { "cardMode": "column" },
+    "GridOverlay": { "cardMode": "single", "primaryStory": "Visible", "viewport": "800x500" }
+  }
+}

@@ -42,3 +42,11 @@ next-env.d.ts
 
 .vercel
 .vscode
+
+# design-sync (claude.ai/design) - staged converter scripts, generated
+# bundle, and machine-local sync state; see .design-sync/NOTES.md
+/.ds-sync/
+/ds-bundle/
+.design-sync/.cache/
+.design-sync/learnings/
+.design-sync/node_modules
