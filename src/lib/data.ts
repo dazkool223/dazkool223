@@ -146,6 +146,17 @@ export const experiments: Experiment[] = [
     stack: ["Vite", "WebRTC", "Supabase", "Vercel"],
     url: "https://jigsaw.neerajkulkarni.in",
   },
+  {
+    fig: "fig. 02",
+    name: "harmonium",
+    tagline: "A harmonium you play with your keyboard.",
+    description:
+      "A sampled harmonium in the browser, played with your computer keyboard. Bellows pressure, reed stops, a Sa-Pa drone and thaat-aware scale lock - because the violin shouldn't have all the fun, and my laptop was feeling left out.",
+    status: "wheeze included",
+    year: "2026",
+    stack: ["Vite", "TypeScript", "Web Audio", "PWA"],
+    url: "https://harmonium.neerajkulkarni.in",
+  },
 ];
 
 export type Tool = {
