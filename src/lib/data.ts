@@ -157,6 +157,17 @@ export const experiments: Experiment[] = [
     stack: ["Vite", "TypeScript", "Web Audio", "PWA"],
     url: "https://harmonium.neerajkulkarni.in",
   },
+  {
+    fig: "fig. 03",
+    name: "utility",
+    tagline: "Developer tools that never leave your browser.",
+    description:
+      "JSON, Base64, hashing, regex, image and PDF tools - 50-odd small utilities, all running client-side so nothing you paste goes anywhere. Built because every 'free online formatter' wanted my data more than I wanted its answer.",
+    status: "offline-ready",
+    year: "2026",
+    stack: ["Vite", "TypeScript", "PWA"],
+    url: "https://utility.neerajkulkarni.in",
+  },
 ];
 
 export type Tool = {
